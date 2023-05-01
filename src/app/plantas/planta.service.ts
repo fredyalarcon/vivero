@@ -15,4 +15,20 @@ export class PlantaService {
   getPlantas(): Observable<Planta[]> {
     return this.http.get<Planta[]>(this.apiUrl);
   }
+
+  getCantidadPlantasTipo() {
+    let count_int = 0;
+    let count_ext = 0;
+    const dds = document.getElementsByTagName('dd');
+    for (let i = 0; i < dds.length; i++) {
+      if (dds[i].getAttribute('data-value') === 'Interior') {
+        count_int++;
+      } else {
+        if (dds[i].getAttribute('data-value') === 'Exterior') {
+          count_ext++;
+        }
+      }
+    }
+    console.log(count_int, count_ext);
+  }
 }
